@@ -204,7 +204,7 @@ export default async function FacturaDetailPage({ params }: Props) {
             {factura.pedido.items.map(item => (
               <tr key={item.id} className="hover:bg-white/1">
                 <td className="p-3 font-semibold text-white">{item.producto.nombre}</td>
-                <td className="p-3 text-center font-bold text-white">{item.quantity ?? item.cantidad}</td>
+                <td className="p-3 text-center font-bold text-white">{item.cantidad}</td>
                 <td className="p-3 text-right">${Number(item.precioUnitario).toFixed(2)}</td>
                 <td className="p-3 text-right font-semibold text-white">${Number(item.subtotal).toFixed(2)}</td>
               </tr>
