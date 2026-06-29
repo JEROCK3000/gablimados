@@ -71,6 +71,7 @@ export default async function VentasPage() {
     total: Number(p.total),
     formaPago: p.formaPago,
     fecha: format(p.createdAt, 'dd/MM/yyyy'),
+    notas: p.notas,
     clienteId: p.clienteId,
     cliente: {
       nombre: p.cliente.nombre,

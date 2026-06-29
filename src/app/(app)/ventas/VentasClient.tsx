@@ -45,6 +45,7 @@ type Venta = {
   total: number
   formaPago: string
   fecha: string
+  notas: string | null
   clienteId: number
   cliente: {
     nombre: string
