@@ -41,6 +41,7 @@ type Pedido = {
     numeroAutorizacion: string | null
     fechaAutorizacion: string | null
     xmlFirmado: string | null
+    mensajeError?: string | null
   } | null
 }
 
