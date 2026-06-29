@@ -56,7 +56,7 @@ export async function generarRidePDF(pedido: any, emisor: any, factura: any, des
   doc.text(`R.U.C.: ${emisor.ruc}`, 100, 15)
   doc.text(`FACTURA`, 100, 22)
   doc.setFont('helvetica', 'normal')
-  doc.text(`No.: ${emisor.codigoEstablecimiento}-${emisor.codigoPuntoEmision}-${pedido.numero.replace('PED-', '')}`, 100, 27)
+  doc.text(`No.: ${emisor.codigoEstablecimiento}-${emisor.codigoPuntoEmision}-${pedido.numero.replace('PED-', '').replace('VEN-', '')}`, 100, 27)
   doc.text(`NÚMERO DE AUTORIZACIÓN:`, 100, 32)
   doc.setFontSize(8)
   doc.text(factura.numeroAutorizacion || 'PENDIENTE', 100, 36, { maxWidth: 95 })

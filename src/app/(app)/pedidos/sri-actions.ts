@@ -96,10 +96,12 @@ export async function emitirFacturaSRIAction(pedidoId: number) {
               mensajeError: null,
             }
           })
-          await prisma.pedido.update({
-            where: { id: pedidoId },
-            data: { estado: 'LISTO' }
-          })
+          if (pedido.estado !== 'VENTA') {
+            await prisma.pedido.update({
+              where: { id: pedidoId },
+              data: { estado: 'LISTO' }
+            })
+          }
           await registrarLog('AUDIT', 'PEDIDOS', `Factura SRI AUTORIZADA mediante consulta previa para Pedido ID ${pedidoId}`)
           revalidatePath('/pedidos')
           return { success: true, accessKey: pedido.facturaSRI.claveAcceso, numeroAutorizacion: autorizacion.numeroAutorizacion }
@@ -300,10 +302,12 @@ export async function emitirFacturaSRIAction(pedidoId: number) {
         }
       })
 
-      await prisma.pedido.update({
-        where: { id: pedidoId },
-        data: { estado: 'LISTO' }
-      })
+      if (pedido.estado !== 'VENTA') {
+        await prisma.pedido.update({
+          where: { id: pedidoId },
+          data: { estado: 'LISTO' }
+        })
+      }
 
       await registrarLog('AUDIT', 'PEDIDOS', `Factura SRI AUTORIZADA para Pedido ID ${pedidoId} (Clave: ${accessKey})`)
       revalidatePath('/pedidos')

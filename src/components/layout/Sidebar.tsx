@@ -18,6 +18,7 @@ import {
   Users,
   ShoppingCart,
   FileText,
+  DollarSign,
 } from 'lucide-react'
 import { logoutAction } from '@/lib/auth/actions'
 import { useState } from 'react'
@@ -69,7 +70,13 @@ const navItems = [
     href: '/pedidos',
     label: 'Pedidos',
     icon: ShoppingCart,
-    description: 'Ventas y cotizaciones',
+    description: 'Tablero de pedidos',
+  },
+  {
+    href: '/ventas',
+    label: 'Ventas',
+    icon: DollarSign,
+    description: 'Ventas directas',
   },
   {
     href: '/facturas',
