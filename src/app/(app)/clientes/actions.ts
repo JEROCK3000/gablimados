@@ -110,8 +110,9 @@ export async function crearClienteAction(data: {
 }) {
   validarIdentificacionSRI(data.tipoIdentificacion, data.identificacion)
   try {
-    await prisma.cliente.create({ data })
+    const nuevo = await prisma.cliente.create({ data })
     revalidatePath('/clientes')
+    return nuevo
   } catch (error: any) {
     if (error.code === 'P2002') {
       throw new Error('Ya existe un cliente con esta identificación')
@@ -146,5 +147,92 @@ export async function desactivarClienteAction(id: number) {
     revalidatePath('/clientes')
   } catch (error) {
     throw new Error('Error al desactivar el cliente')
+  }
+}
+
+export async function consultarIdentificacionAction(identificacion: string) {
+  const clean = identificacion.trim()
+  if (clean.length !== 10 && clean.length !== 13) {
+    return { success: false, error: 'La identificación debe tener 10 dígitos (Cédula) o 13 dígitos (RUC)' }
+  }
+
+  try {
+    // 1. Buscar en BD local para evitar consumir créditos de la API
+    const existing = await prisma.cliente.findUnique({
+      where: { identificacion: clean }
+    })
+    if (existing) {
+      return {
+        success: true,
+        origen: 'LOCAL',
+        nombre: existing.nombre,
+        direccion: existing.direccion || '',
+        email: existing.email || '',
+        telefono: existing.telefono || ''
+      }
+    }
+
+    // 2. Cargar token de EcuadorAPI
+    const tokenConfig = await prisma.configNegocio.findUnique({
+      where: { clave: 'ecuador_api_token' }
+    })
+    const token = tokenConfig?.valor || ''
+    if (!token) {
+      return { success: false, error: 'No se ha configurado el Token de EcuadorAPI en Configuración > Facturación SRI.' }
+    }
+
+    // 3. Consultar a la API externa
+    const isRuc = clean.length === 13
+    const url = isRuc 
+      ? `https://api.ecuadorapi.com/api/v1/rucs/${clean}`
+      : `https://api.ecuadorapi.com/api/v1/cedulas/${clean}`
+
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      next: { revalidate: 0 }
+    })
+
+    if (!res.ok) {
+      if (res.status === 404) {
+        return { success: false, error: `La identificación ${clean} no fue encontrada en los registros públicos.` }
+      }
+      if (res.status === 401) {
+        return { success: false, error: 'El Token de EcuadorAPI configurado no es válido o ha expirado.' }
+      }
+      return { success: false, error: `El servicio externo respondió con un error (Código ${res.status}).` }
+    }
+
+    const data = await res.json()
+
+    let nombre = ''
+    let direccion = ''
+
+    if (isRuc) {
+      nombre = data.razonSocial || data.nombreComercial || data.name || ''
+      direccion = data.direccionMatriz || data.direccion || ''
+    } else {
+      nombre = data.name || data.nombre || ''
+      direccion = ''
+    }
+
+    if (!nombre) {
+      return { success: false, error: 'No se encontraron datos legibles para esta identificación.' }
+    }
+
+    return {
+      success: true,
+      origen: 'API',
+      nombre: nombre.trim().toUpperCase(),
+      direccion: direccion.trim().toUpperCase(),
+      email: '',
+      telefono: ''
+    }
+  } catch (error: any) {
+    console.error('Error al consultar identificación:', error)
+    return { success: false, error: 'Error de red al conectar con el servicio: ' + (error.message || error) }
   }
 }

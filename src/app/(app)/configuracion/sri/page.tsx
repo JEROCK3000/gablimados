@@ -14,22 +14,27 @@ export default async function SriConfiguracionPage() {
   if (!sesion) redirect('/login')
 
   const config = await prisma.emisorSRI.findFirst()
+  const tokenConfig = await prisma.configNegocio.findUnique({
+    where: { clave: 'ecuador_api_token' }
+  })
+  const ecuadorApiToken = tokenConfig?.valor || ''
 
-  const formattedConfig = config ? {
-    ruc: config.ruc,
-    razonSocial: config.razonSocial,
-    nombreComercial: config.nombreComercial ?? '',
-    dirMatriz: config.dirMatriz,
-    dirEstablecimiento: config.dirEstablecimiento,
-    codigoEstablecimiento: config.codigoEstablecimiento,
-    codigoPuntoEmision: config.codigoPuntoEmision,
-    obligadoContabilidad: config.obligadoContabilidad,
-    ambiente: config.ambiente,
-    passwordFirma: config.passwordFirma,
-    rutaFirma: config.rutaFirma,
-    contribuyenteEspecial: config.contribuyenteEspecial ?? '',
-    agenteRetencion: config.agenteRetencion ?? '',
-  } : null
+  const formattedConfig = {
+    ruc: config?.ruc ?? '',
+    razonSocial: config?.razonSocial ?? '',
+    nombreComercial: config?.nombreComercial ?? '',
+    dirMatriz: config?.dirMatriz ?? '',
+    dirEstablecimiento: config?.dirEstablecimiento ?? '',
+    codigoEstablecimiento: config?.codigoEstablecimiento ?? '001',
+    codigoPuntoEmision: config?.codigoPuntoEmision ?? '001',
+    obligadoContabilidad: config?.obligadoContabilidad ?? false,
+    ambiente: config?.ambiente ?? 1,
+    passwordFirma: config?.passwordFirma ?? '',
+    rutaFirma: config?.rutaFirma ?? '',
+    contribuyenteEspecial: config?.contribuyenteEspecial ?? '',
+    agenteRetencion: config?.agenteRetencion ?? '',
+    ecuadorApiToken
+  }
 
   return (
     <div className="space-y-6 max-w-2xl">

@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { Save, Loader2, X } from 'lucide-react'
-import { crearClienteAction, actualizarClienteAction } from './actions'
+import { Save, Loader2, X, Search } from 'lucide-react'
+import { crearClienteAction, actualizarClienteAction, consultarIdentificacionAction } from './actions'
+import { toast } from 'sonner'
 
 interface Props {
   cliente?: {
@@ -15,10 +16,12 @@ interface Props {
     direccion: string | null
   } | null
   onClose: () => void
+  onSuccess?: (nuevo: any) => void
 }
 
-export function ClienteForm({ cliente, onClose }: Props) {
+export function ClienteForm({ cliente, onClose, onSuccess }: Props) {
   const [loading, setLoading] = useState(false)
+  const [consultando, setConsultando] = useState(false)
   const [error, setError] = useState('')
 
   const [form, setForm] = useState({
@@ -29,6 +32,38 @@ export function ClienteForm({ cliente, onClose }: Props) {
     telefono: cliente?.telefono ?? '',
     direccion: cliente?.direccion ?? '',
   })
+
+  const handleConsultarIdentificacion = async () => {
+    const iden = form.identificacion.trim()
+    if (iden.length !== 10 && iden.length !== 13) {
+      toast.error('La identificación debe tener 10 dígitos (Cédula) o 13 dígitos (RUC)')
+      return
+    }
+
+    setConsultando(true)
+    try {
+      const res = await consultarIdentificacionAction(iden)
+      if (res.success) {
+        setForm(f => ({
+          ...f,
+          nombre: res.nombre || f.nombre,
+          direccion: res.direccion || f.direccion,
+          email: res.email || f.email,
+          telefono: res.telefono || f.telefono
+        }))
+        toast.success(res.origen === 'LOCAL' 
+          ? 'Cliente encontrado en base de datos local.' 
+          : 'Cliente autocompletado desde SRI/Registro Civil.'
+        )
+      } else {
+        toast.error(res.error || 'No se pudo obtener información.')
+      }
+    } catch (err: any) {
+      toast.error('Error al realizar la consulta: ' + err.message)
+    } finally {
+      setConsultando(false)
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -42,10 +77,15 @@ export function ClienteForm({ cliente, onClose }: Props) {
     try {
       if (cliente) {
         await actualizarClienteAction(cliente.id, form)
+        onClose()
       } else {
-        await crearClienteAction(form)
+        const nuevo = await crearClienteAction(form)
+        if (onSuccess) {
+          onSuccess(nuevo)
+        } else {
+          onClose()
+        }
       }
-      onClose()
     } catch (err: any) {
       setError(err.message)
     } finally {
@@ -97,15 +137,32 @@ export function ClienteForm({ cliente, onClose }: Props) {
               </div>
               <div>
                 <label className="label">Identificación *</label>
-                <input
-                  type="text"
-                  value={form.identificacion}
-                  onChange={e => setForm(f => ({ ...f, identificacion: e.target.value }))}
-                  className="input disabled:opacity-60 disabled:bg-gray-100 dark:disabled:bg-white/5"
-                  placeholder="0912345678"
-                  required
-                  disabled={form.tipoIdentificacion === 'CONSUMIDOR_FINAL'}
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={form.identificacion}
+                    onChange={e => setForm(f => ({ ...f, identificacion: e.target.value }))}
+                    className="input disabled:opacity-60 disabled:bg-gray-100 dark:disabled:bg-white/5 flex-1"
+                    placeholder="0912345678"
+                    required
+                    disabled={form.tipoIdentificacion === 'CONSUMIDOR_FINAL'}
+                  />
+                  {form.tipoIdentificacion !== 'CONSUMIDOR_FINAL' && !cliente && (
+                    <button
+                      type="button"
+                      onClick={handleConsultarIdentificacion}
+                      disabled={consultando || !form.identificacion.trim()}
+                      className="btn-secondary px-3 h-10 flex items-center justify-center rounded-xl"
+                      title="Consultar SRI/Registro Civil"
+                    >
+                      {consultando ? (
+                        <Loader2 size={16} className="animate-spin" />
+                      ) : (
+                        <Search size={16} />
+                      )}
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
 

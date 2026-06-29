@@ -19,6 +19,7 @@ interface Props {
     rutaFirma: string
     contribuyenteEspecial: string
     agenteRetencion: string
+    ecuadorApiToken?: string
   } | null
 }
 
@@ -40,6 +41,7 @@ export function SriConfigForm({ config }: Props) {
     passwordFirma: config?.passwordFirma ?? '',
     contribuyenteEspecial: config?.contribuyenteEspecial ?? '',
     agenteRetencion: config?.agenteRetencion ?? '',
+    ecuadorApiToken: config?.ecuadorApiToken ?? ''
   })
   
   const [firma, setFirma] = useState<File | null>(null)
@@ -64,6 +66,7 @@ export function SriConfigForm({ config }: Props) {
       formData.append('passwordFirma', form.passwordFirma)
       formData.append('contribuyenteEspecial', form.contribuyenteEspecial)
       formData.append('agenteRetencion', form.agenteRetencion)
+      formData.append('ecuadorApiToken', form.ecuadorApiToken)
       
       if (firma) {
         formData.append('firma', firma)
@@ -254,6 +257,25 @@ export function SriConfigForm({ config }: Props) {
             placeholder="Establecimiento..."
             required
           />
+        </div>
+      </div>
+
+      <div className="card border border-white/5 bg-[#0f0f23]/60 space-y-4">
+        <h3 className="font-bold text-white flex items-center gap-2 text-sm border-b border-white/5 pb-2">
+          🔌 Integraciones de Consulta
+        </h3>
+        <div>
+          <label className="label">Token de EcuadorAPI (Consulta Cédula/RUC)</label>
+          <input
+            type="password"
+            value={form.ecuadorApiToken}
+            onChange={e => setForm(f => ({ ...f, ecuadorApiToken: e.target.value }))}
+            placeholder="ecu_..."
+            className="input font-mono text-xs"
+          />
+          <p className="text-[10px] text-gray-400 mt-1">
+            Token de acceso obtenido desde <a href="https://ecuadorapi.com" target="_blank" rel="noopener noreferrer" className="text-verde-500 hover:underline">ecuadorapi.com</a> para autocompletar clientes con un solo clic.
+          </p>
         </div>
       </div>
 

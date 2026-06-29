@@ -19,6 +19,7 @@ export async function guardarConfiguracionSRIAction(formData: FormData) {
   const passwordFirma = formData.get('passwordFirma') as string
   const contribuyenteEspecial = formData.get('contribuyenteEspecial') as string
   const agenteRetencion = formData.get('agenteRetencion') as string
+  const ecuadorApiToken = formData.get('ecuadorApiToken') as string || ''
   
   const archivoFirma = formData.get('firma') as File | null
 
@@ -69,7 +70,14 @@ export async function guardarConfiguracionSRIAction(formData: FormData) {
       })
     }
 
-    await registrarLog('AUDIT', 'CONFIG', 'Configuración de emisor SRI guardada.')
+    // Guardar también el token de EcuadorAPI en config_negocio
+    await prisma.configNegocio.upsert({
+      where: { clave: 'ecuador_api_token' },
+      update: { valor: ecuadorApiToken.trim() },
+      create: { clave: 'ecuador_api_token', valor: ecuadorApiToken.trim() }
+    })
+
+    await registrarLog('AUDIT', 'CONFIG', 'Configuración de emisor SRI y EcuadorAPI guardada.')
     revalidatePath('/configuracion')
   } catch (error: any) {
     await registrarLog('ERROR', 'CONFIG', `Error al guardar configuración emisor SRI: ${error.message || error}`)

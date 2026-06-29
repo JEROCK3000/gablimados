@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Plus, Trash2, Save, Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { crearPedidoAction } from '../actions'
+import { ClienteForm } from '../../clientes/ClienteForm'
 
 interface Props {
   clientes: Array<{ id: number, nombre: string, identificacion: string }>
@@ -13,6 +14,7 @@ interface Props {
 export function PedidoForm({ clientes, productos }: Props) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const [showQuickClient, setShowQuickClient] = useState(false)
   
   const [clienteId, setClienteId] = useState<number | ''>('')
   const [formaPago, setFormaPago] = useState('01')
@@ -92,17 +94,27 @@ export function PedidoForm({ clientes, productos }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="label">Cliente *</label>
-            <select 
-              value={clienteId} 
-              onChange={e => setClienteId(Number(e.target.value) || '')}
-              className="input"
-              required
-            >
-              <option value="">Seleccionar cliente...</option>
-              {clientes.map(c => (
-                <option key={c.id} value={c.id}>{c.nombre} ({c.identificacion})</option>
-              ))}
-            </select>
+            <div className="flex gap-2">
+              <select 
+                value={clienteId} 
+                onChange={e => setClienteId(Number(e.target.value) || '')}
+                className="input flex-1"
+                required
+              >
+                <option value="">Seleccionar cliente...</option>
+                {clientes.map(c => (
+                  <option key={c.id} value={c.id}>{c.nombre} ({c.identificacion})</option>
+                ))}
+              </select>
+              <button
+                type="button"
+                onClick={() => setShowQuickClient(true)}
+                className="btn-secondary px-3 h-10 flex items-center justify-center rounded-xl"
+                title="Crear Cliente Rápido"
+              >
+                <Plus size={16} />
+              </button>
+            </div>
           </div>
           <div>
             <label className="label">Forma de Pago (SRI) *</label>
@@ -226,5 +238,19 @@ export function PedidoForm({ clientes, productos }: Props) {
         </button>
       </div>
     </form>
+
+    {showQuickClient && (
+      <ClienteForm
+        onClose={() => {
+          setShowQuickClient(false)
+          router.refresh()
+        }}
+        onSuccess={(nuevo) => {
+          setShowQuickClient(false)
+          setClienteId(nuevo.id)
+          router.refresh()
+        }}
+      />
+    )}
   )
 }
