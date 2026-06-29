@@ -73,16 +73,22 @@ export function CorreoConfigForm({ config }: Props) {
     }
 
     setLoadingTest(true)
-    const testPromise = probarConexionAction({
-      smtp_host: host,
-      smtp_port: port,
-      smtp_user: user,
-      smtp_pass: pass,
-      smtp_secure: secure,
-      smtp_from_name: fromName,
-      smtp_from_email: fromEmail || user,
-      destinatario: emailPrueba
-    })
+    const testPromise = (async () => {
+      const res = await probarConexionAction({
+        smtp_host: host,
+        smtp_port: port,
+        smtp_user: user,
+        smtp_pass: pass,
+        smtp_secure: secure,
+        smtp_from_name: fromName,
+        smtp_from_email: fromEmail || user,
+        destinatario: emailPrueba
+      })
+      if (!res.success) {
+        throw new Error(res.error)
+      }
+      return res
+    })()
 
     toast.promise(testPromise, {
       loading: 'Probando conexión y enviando correo de prueba...',

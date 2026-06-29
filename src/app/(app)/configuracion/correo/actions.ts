@@ -116,6 +116,6 @@ export async function probarConexionAction(data: {
     return { success: true }
   } catch (error: any) {
     console.error('Error en prueba SMTP:', error)
-    throw new Error(error.message || 'La prueba de conexión SMTP falló. Verifica tus credenciales.')
+    return { success: false, error: error.message || 'La prueba de conexión SMTP falló. Verifica tus credenciales.' }
   }
 }
