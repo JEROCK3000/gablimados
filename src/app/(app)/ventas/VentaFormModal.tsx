@@ -43,7 +43,7 @@ export function VentaFormModal({ isOpen, onClose, clientes, productos, venta }: 
     productoId: number | ''
     cantidad: number
     precioUnitario: number
-  }>>([{ uid: crypto.randomUUID(), productoId: '', cantidad: 1, precioUnitario: 0 }])
+  }>>([{ uid: 'item-0', productoId: '', cantidad: 1, precioUnitario: 0 }])
 
   // Load editing data if present
   useEffect(() => {
@@ -63,7 +63,7 @@ export function VentaFormModal({ isOpen, onClose, clientes, productos, venta }: 
       setFormaPago('01')
       setNotas('')
       setDescuentoGlobal(0)
-      setItems([{ uid: crypto.randomUUID(), productoId: '', cantidad: 1, precioUnitario: 0 }])
+      setItems([{ uid: 'item-0', productoId: '', cantidad: 1, precioUnitario: 0 }])
     }
   }, [venta, isOpen])
 

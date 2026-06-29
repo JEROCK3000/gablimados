@@ -26,7 +26,7 @@ export function PedidoForm({ clientes, productos }: Props) {
     productoId: number | ''
     cantidad: number
     precioUnitario: number
-  }>>([{ uid: crypto.randomUUID(), productoId: '', cantidad: 1, precioUnitario: 0 }])
+  }>>([{ uid: 'item-0', productoId: '', cantidad: 1, precioUnitario: 0 }])
 
   const agregarFila = () => {
     setItems(prev => [...prev, { uid: crypto.randomUUID(), productoId: '', cantidad: 1, precioUnitario: 0 }])
