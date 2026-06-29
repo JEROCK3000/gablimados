@@ -202,7 +202,7 @@ export async function emitirFacturaSRIAction(pedidoId: number) {
       .replace(' xmlns:ds="http://www.w3.org/2000/09/xmldsig#"', '')
       .replace(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"', '')
 
-    let p12Buffer: ArrayBuffer
+    let p12Buffer: any
     try {
       p12Buffer = getP12FromLocalFile(emisor.rutaFirma)
     } catch (err: any) {
