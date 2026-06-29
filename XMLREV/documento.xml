@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><autorizacion><estado>AUTORIZADO</estado><numeroAutorizacion>2406202601050053106600120040070000083801782322014</numeroAutorizacion><fechaAutorizacion>2026-06-24T12:27:41-05:00</fechaAutorizacion><ambiente>PRODUCCIÓN</ambiente><comprobante>
+<factura id="comprobante" version="1.1.0"><infoTributaria><ambiente>2</ambiente><tipoEmision>1</tipoEmision><razonSocial>VITERI ALTAMIRANO SUSANA CECILIA</razonSocial><nombreComercial>IMPRESUM</nombreComercial><ruc>0500531066001</ruc><claveAcceso>2406202601050053106600120040070000083801782322014</claveAcceso><codDoc>01</codDoc><estab>004</estab><ptoEmi>007</ptoEmi><secuencial>000008380</secuencial><dirMatriz>E3 INGLATERRA N31-224 Y N32 MARIANA DE JESUS</dirMatriz></infoTributaria><infoFactura><fechaEmision>24/06/2026</fechaEmision><obligadoContabilidad>NO</obligadoContabilidad><tipoIdentificacionComprador>04</tipoIdentificacionComprador><razonSocialComprador>CARDENAS CARDENAS GABRIELA ALEJANDRA</razonSocialComprador><identificacionComprador>1758035602001</identificacionComprador><direccionComprador>SAN FRANCISCO DE BORJA (VIRGILIO DAVILA)/SAN FRANCISCO DE BORJA DPT-2 Y VICTOR MONTENEGRO</direccionComprador><totalSinImpuestos>14.06</totalSinImpuestos><totalDescuento>0.74</totalDescuento><totalConImpuestos><totalImpuesto><codigo>2</codigo><codigoPorcentaje>4</codigoPorcentaje><baseImponible>14.06</baseImponible><valor>2.11</valor></totalImpuesto></totalConImpuestos><propina>0.00</propina><importeTotal>16.17</importeTotal><moneda>DOLAR</moneda><pagos><pago><formaPago>20</formaPago><total>16.17</total></pago></pagos></infoFactura><detalles><detalle><codigoPrincipal>CA1-95 BODEGA 1</codigoPrincipal><codigoAuxiliar>BODEGA 2</codigoAuxiliar><descripcion>11.7*8*13 BL PRT JARROS</descripcion><cantidad>40</cantidad><precioUnitario>0.17000</precioUnitario><descuento>0.34</descuento><precioTotalSinImpuesto>6.46</precioTotalSinImpuesto><impuestos><impuesto><codigo>2</codigo><codigoPorcentaje>4</codigoPorcentaje><tarifa>15.00</tarifa><baseImponible>6.46</baseImponible><valor>0.97</valor></impuesto></impuestos></detalle><detalle><codigoPrincipal>CA2-72</codigoPrincipal><descripcion>10*10*10 B.C/V 1 CUERPO</descripcion><cantidad>20</cantidad><precioUnitario>0.40000</precioUnitario><descuento>0.40</descuento><precioTotalSinImpuesto>7.60</precioTotalSinImpuesto><impuestos><impuesto><codigo>2</codigo><codigoPorcentaje>4</codigoPorcentaje><tarifa>15.00</tarifa><baseImponible>7.60</baseImponible><valor>1.14</valor></impuesto></impuestos></detalle></detalles><infoAdicional><campoAdicional nombre="Correo">gcardenas@solinteec.com</campoAdicional><campoAdicional nombre="Teléfono">0995615304</campoAdicional><campoAdicional nombre="Ciudad">QUIJOS</campoAdicional></infoAdicional><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature904795">
+<ds:SignedInfo Id="Signature-SignedInfo988416">
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:CanonicalizationMethod>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod>
+<ds:Reference Id="SignedPropertiesID354207" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature904795-SignedProperties243531">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>cWJT8J2rGXZnpLDJLE8ZIZzKzTs=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#Certificate373475">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>eybvrOjrZNrBxvejnm/J9tX9utU=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Id="Reference-ID-333534" URI="#comprobante">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>m38vkPoFXaypCBaogxSyN+V6l7k=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue Id="SignatureValue472405">
+SI4R9/paJImoppwkuiBw9AQC7yZId+3tCuZgwDEUdmcHFoBgB2BHEgcSYwHJSQGe
+CuWifVj06MQuE2KJ2jDvxXGQhHYH9xQiDv01guVzjIehoeJImDNdiA1EcTB9UXd+
+iWtLPPtjtkOEeWh9hgfNfIHTfDVGIOoSKFfdUl6GyioiExVPDdZ+/9zHNfPPKLw9
+0yxFz7HZdKr6wrCBPbRG23c57vRyw2Y/mMQVT1cPrgqZ0ZnheeGpS7BJtljCkZh2
+DSLq+96D3xwUzXztyas81SN6tQuKNMK5LN7d1aDYarJhLNVBh7XjBUXUiDk4Wv+C
+AeEWDjFc4txmY6QyblTbsA==
+</ds:SignatureValue>
+<ds:KeyInfo Id="Certificate373475">
+<ds:X509Data>
+<ds:X509Certificate>
+MIIH1zCCBr+gAwIBAgIFAMICLqQwDQYJKoZIhvcNAQELBQAwRzELMAkGA1UEBhMC
+RUMxGzAZBgNVBAoMEkxhenphdGUgQ2lhLiBMdGRhLjEbMBkGA1UEAwwSTGF6emF0
+ZSBFbWlzb3IgQ0EyMB4XDTI1MDkyNDEwMjcyM1oXDTI2MDkyNDEwMjcyM1owgaAx
+CzAJBgNVBAYTAkVDMRswGQYDVQQKDBJMYXp6YXRlIENpYS4gTHRkYS4xHjAcBgNV
+BAsMFUVudGUgZGUgQ2VydGlmaWNhY2lvbjEqMCgGA1UEAwwhU1VTQU5BIENFQ0lM
+SUEgIFZJVEVSSSBBTFRBTUlSQU5PMSgwJgYJKoZIhvcNAQkBFhlyaWNoYXJkLmd1
+YW5vLnZAZ21haWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA
+47StaLgv/WVinLuHk1mxmDkEEniAubFcwjJ4H3baLjejHVawn8sJxE89RNplGUz+
+o0plaC/iAl0ekktXzNXOzSXWJiyNh6XKlQRXctx6j0NYa0pSLbwlQNCpTE9utCrc
+6rh7iTbCFbOKkntqTVdAySYnk6xEkaSzTCszWHKT/67lOH9ZAm92fnXH4dApY6qn
+sj/JKNul5NtDrr0xmohZlp9OpuV4h+obo/xvpyJzrlGoHJ9+2nRD+Mo2L8/dftr8
+TLUBkHNkTYSG3s2hZbX3paG81xOrTK2y60Ar+u/ZHNdKkUe4CDJhFXiDqSG6/jXe
+Jbmd8UzPFohqsG4SosZ8nQIDAQABo4IEbjCCBGowGgYKKwYBBAGDz3YDAQQMDAow
+NTAwNTMxMDY2MB4GCisGAQQBg892AwIEEAwOU1VTQU5BIENFQ0lMSUEwFgYKKwYB
+BAGDz3YDAwQIDAZWSVRFUkkwGgYKKwYBBAGDz3YDBAQMDApBTFRBTUlSQU5PMCAG
+CisGAQQBg892AwcEEgwQTWFyaWFuYSBkZSBKZXN1czAaBgorBgEEAYPPdgMIBAwM
+CjA5OTUyMjM1NTkwFQYKKwYBBAGDz3YDCQQHDAVRdWl0bzAXBgorBgEEAYPPdgMM
+BAkMB0VDVUFET1IwHQYKKwYBBAGDz3YDCwQPDA0wNTAwNTMxMDY2MDAxMAwGA1Ud
+EwEB/wQCMAAwHQYDVR0OBBYEFJVWaX18VlmrIrfYuN8HvOmY+KAiMB8GA1UdIwQY
+MBaAFO12SLAK8cmGhgxMRmTSBvjM1b0+MA4GA1UdDwEB/wQEAwIF4DA6BgNVHR8E
+MzAxMC+gLaArhilodHRwOi9lbmV4dDIueHl6L0xhenphdGVDQTIvZW1pc29yQ0Ey
+LmNybDCCAYQGA1UdIASCAXswggF3MHwGCisGAQQBg892AgEwbjBsBggrBgEFBQcC
+AjBgGl5FbCBwcmVzZW50ZSBjZXJ0aWZpY2FkbyBlcyBlbWl0aWRvIGVuIGJhc2Ug
+YSBsYXMgcG9sw610aWNhcyBkZSBzZWd1cmlkYWQgZGUgTGF6emF0ZSBDaWEuIEx0
+ZGEuMIH2BgkrBgEEAYPPdgIwgegwbAYIKwYBBQUHAgIwYBpeRWwgcHJlc2VudGUg
+Y2VydGlmaWNhZG8gZXMgZW1pdGlkbyBlbiBiYXNlIGEgbGFzIHBvbMOtdGljYXMg
+ZGUgc2VndXJpZGFkIGRlIExhenphdGUgQ2lhLiBMdGRhLjB4BggrBgEFBQcCAjBs
+GmpFbCBwcmVzZW50ZSBjZXJ0aWZpY2FkbyBzdWJvcmRpbmFkbyBlcyBlbWl0aWRv
+IGVuIGJhc2UgYSBsYXMgcG9sw610aWNhcyBkZSBzZWd1cmlkYWQgZGUgTGF6emF0
+ZSBDaWEuIEx0ZGEuMIIBCQYDVR0RBIIBADCB/aAaBgorBgEEAYPPdgMBoAwMCjA1
+MDA1MzEwNjagHgYKKwYBBAGDz3YDAqAQDA5TVVNBTkEgQ0VDSUxJQaAWBgorBgEE
+AYPPdgMDoAgMBlZJVEVSSaAaBgorBgEEAYPPdgMEoAwMCkFMVEFNSVJBTk+gIAYK
+KwYBBAGDz3YDB6ASDBBNYXJpYW5hIGRlIEplc3VzoBoGCisGAQQBg892AwigDAwK
+MDk5NTIyMzU1OaAVBgorBgEEAYPPdgMJoAcMBVF1aXRvoBcGCisGAQQBg892Awyg
+CQwHRUNVQURPUqAdBgorBgEEAYPPdgMLoA8MDTA1MDA1MzEwNjYwMDEwPAYIKwYB
+BQUHAQEEMDAuMCwGCCsGAQUFBzABhiBodHRwOi8vZW5leHQyLnh5ejo4Nzc3L2Fk
+c3Mvb2NzcDANBgkqhkiG9w0BAQsFAAOCAQEAAVzQzEAkbw1UcaUfdZLj2vxBCwP5
+WG3zF2Eg6s5IvcZBxKQ/5eFMjRLW+LxCK67IathktzLbJmtudC0SVRIFbgJRCjby
+FsCEdgiK93qnT5ChOlD9EYklXeT7jeg7wZ7PK6oX3ryjlXxFlKH9fspI101Kx1Xq
+nF9TEWTFmy1YFI6BVeFEJ0ypTZgM7cXB143QQPZWmXSnrOuQSr5yEijC2ZpEHJuW
+C5K5hQhNPzwkD7mBOuRNB3YpPk3/3XA/7Zk6gXYji6MYoLWKteslo3jSHKUdMX34
+rCil58HqIlwt1oK+q14VKEylEC+pKYG8hl6f869tiUHgaecjqkc0SvJZxQ==
+</ds:X509Certificate>
+</ds:X509Data>
+<ds:KeyValue>
+<ds:RSAKeyValue>
+<ds:Modulus>
+47StaLgv/WVinLuHk1mxmDkEEniAubFcwjJ4H3baLjejHVawn8sJxE89RNplGUz+
+o0plaC/iAl0ekktXzNXOzSXWJiyNh6XKlQRXctx6j0NYa0pSLbwlQNCpTE9utCrc
+6rh7iTbCFbOKkntqTVdAySYnk6xEkaSzTCszWHKT/67lOH9ZAm92fnXH4dApY6qn
+sj/JKNul5NtDrr0xmohZlp9OpuV4h+obo/xvpyJzrlGoHJ9+2nRD+Mo2L8/dftr8
+TLUBkHNkTYSG3s2hZbX3paG81xOrTK2y60Ar+u/ZHNdKkUe4CDJhFXiDqSG6/jXe
+Jbmd8UzPFohqsG4SosZ8nQ==
+</ds:Modulus>
+<ds:Exponent>AQAB</ds:Exponent>
+</ds:RSAKeyValue>
+</ds:KeyValue>
+</ds:KeyInfo>
+<ds:Object Id="Signature904795-Object327219"><etsi:QualifyingProperties Target="#Signature904795"><etsi:SignedProperties Id="Signature904795-SignedProperties243531"><etsi:SignedSignatureProperties><etsi:SigningTime>2026-06-24T12:27:40-05:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>t4SkdRq8FaK9QMVOHtel+UuVW0U=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>CN=Lazzate Emisor CA2,O=Lazzate Cia. Ltda.,C=EC</ds:X509IssuerName><ds:X509SerialNumber>3254922916</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-333534"><etsi:Description>contenido comprobante</etsi:Description><etsi:MimeType>FIRMA DIGITAL SRI</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></factura></comprobante></autorizacion>

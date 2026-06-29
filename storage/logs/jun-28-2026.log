@@ -1,0 +1,93 @@
+[2026-06-28 00:32:30] [AUDIT] [CONFIG] Costos fijos actualizados: 6/2026
+[2026-06-28 00:36:41] [INFO] [CALCULADORA] Cálculo guardado: JARRO BLANCO SUBLIMADO
+[2026-06-28 00:36:56] [AUDIT] [REPORTES] Reporte Excel generado por: admin@gablimados.com
+[2026-06-28 00:48:21] [AUDIT] [PRODUCTOS] Producto creado: JARRO BLANCO SUBLIMADO
+[2026-06-28 01:54:52] [ERROR] [PEDIDOS] Error al crear pedido: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].pedido.create()` invocation in
+/Users/admin/Documents/proyectos/gablimados/.next/dev/server/chunks/ssr/[root-of-the-server]__0alai24._.js:227:155
+
+  224     numero = `PED-${String(ultimoNum + 1).padStart(5, '0')}`;
+  225 }
+  226 try {
+→ 227     await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].pedido.create({
+            data: {
+              numero: "PED-00001",
+              clienteId: 2,
+              estado: "COTIZACION",
+              formaPago: "01",
+              ~~~~~~~~~
+              notas: "",
+              subtotal: 125.21520000000001,
+              iva: 18.78228,
+              descuento: 0,
+              total: 143.99748,
+              items: {
+                create: [
+                  {
+                    productoId: 1,
+                    cantidad: 36,
+                    precioUnitario: 3.4782,
+                    subtotal: 125.21520000000001
+                  }
+                ]
+              },
+          ?   id?: Int,
+          ?   createdAt?: DateTime,
+          ?   updatedAt?: DateTime
+            }
+          })
+
+Unknown argument `formaPago`. Available options are marked with ?.
+[2026-06-28 01:56:59] [AUDIT] [PEDIDOS] Pedido/Cotización creado: PED-00001
+[2026-06-28 02:13:05] [AUDIT] [CONFIG] Configuración de emisor SRI guardada.
+[2026-06-28 02:13:43] [ERROR] [PEDIDOS] Error al emitir factura SRI: Error al firmar el XML con la clave provista: Cannot read properties of undefined (reading 'attributes')
+[2026-06-28 02:17:28] [ERROR] [PEDIDOS] Error al emitir factura SRI: No se recibió respuesta de autorización del SRI (comprobante pendiente).
+[2026-06-28 02:22:03] [ERROR] [PEDIDOS] Error al emitir factura SRI: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].facturaSRI.upsert()` invocation in
+/Users/admin/Documents/proyectos/gablimados/.next/dev/server/chunks/ssr/[root-of-the-server]__0-w6dtr._.js:675:163
+
+  672     }
+  673 }
+  674 if (!autorizacion) {
+→ 675     await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].facturaSRI.upsert(
+The provided value for the column is too long for the column's type. Column: claveAcceso
+[2026-06-28 02:27:52] [ERROR] [PEDIDOS] Error al emitir factura SRI: El SRI está demorando en procesar el comprobante (quedó como PENDIENTE). Por favor vuelve a intentar en unos minutos para actualizar el estado.
+[2026-06-28 02:28:14] [ERROR] [PEDIDOS] Error al emitir factura SRI: El SRI está demorando en procesar el comprobante (quedó como PENDIENTE). Por favor vuelve a intentar en unos minutos para actualizar el estado.
+[2026-06-28 02:35:30] [ERROR] [PEDIDOS] Error al emitir factura SRI: El SRI está demorando en procesar el comprobante (quedó como PENDIENTE). Por favor vuelve a intentar en unos minutos para actualizar el estado.
+[2026-06-28 02:38:54] [ERROR] [PEDIDOS] Error al emitir factura SRI: El SRI está demorando en procesar el comprobante (quedó como PENDIENTE). Por favor vuelve a intentar en unos minutos para actualizar el estado.
+[2026-06-28 02:39:58] [AUDIT] [PEDIDOS] Pedido/Cotización creado: PED-00002
+[2026-06-28 02:40:23] [ERROR] [PEDIDOS] Error al emitir factura SRI: El SRI está demorando en procesar el comprobante (quedó como PENDIENTE). Por favor vuelve a intentar en unos minutos para actualizar el estado.
+[2026-06-28 02:40:43] [ERROR] [PEDIDOS] Error al emitir factura SRI: El SRI está demorando en procesar el comprobante (quedó como PENDIENTE). Por favor vuelve a intentar en unos minutos para actualizar el estado.
+[2026-06-28 02:40:54] [AUDIT] [PEDIDOS] Pedido/Cotización creado: PED-00003
+[2026-06-28 02:45:29] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Recepción Devuelta: ARCHIVO NO CUMPLE ESTRUCTURA XML: Se encontró el siguiente error en la estructura del comprobante: cvc-complex-type.2.4.a: Invalid content was found starting with element 'codDoc'. One of '{claveAcceso}' is expected..
+[2026-06-28 02:48:51] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Recepción Devuelta: ARCHIVO NO CUMPLE ESTRUCTURA XML: Se encontró el siguiente error en la estructura del comprobante: cvc-complex-type.2.4.a: Invalid content was found starting with element 'ds:Signature'. One of '{reembolsos, tipoNegociable, maquinaFiscal, infoAdicional, "http://www.w3.org/2000/09/xmldsig#":Signature}' is expected..
+[2026-06-28 02:56:11] [ERROR] [PEDIDOS] Factura SRI RECHAZADA para Pedido ID 3: FIRMA INVALIDA: La firma es invalida [Firma inválida (firma y/o certificados alterados)]
+[2026-06-28 02:56:11] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Autorización Rechazada: FIRMA INVALIDA: La firma es invalida [Firma inválida (firma y/o certificados alterados)]
+[2026-06-28 02:59:09] [ERROR] [PEDIDOS] Factura SRI RECHAZADA para Pedido ID 3: FIRMA INVALIDA: La firma es invalida [Firma inválida (firma y/o certificados alterados)]
+[2026-06-28 02:59:09] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Autorización Rechazada: FIRMA INVALIDA: La firma es invalida [Firma inválida (firma y/o certificados alterados)]
+[2026-06-28 03:00:11] [ERROR] [PEDIDOS] Factura SRI RECHAZADA para Pedido ID 2: FIRMA INVALIDA: La firma es invalida [Firma inválida (firma y/o certificados alterados)]
+[2026-06-28 03:00:11] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Autorización Rechazada: FIRMA INVALIDA: La firma es invalida [Firma inválida (firma y/o certificados alterados)]
+[2026-06-28 03:00:37] [ERROR] [PEDIDOS] Factura SRI RECHAZADA para Pedido ID 3: FIRMA INVALIDA: La firma es invalida [Firma inválida (firma y/o certificados alterados)]
+[2026-06-28 03:00:38] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Autorización Rechazada: FIRMA INVALIDA: La firma es invalida [Firma inválida (firma y/o certificados alterados)]
+[2026-06-28 03:04:09] [ERROR] [PEDIDOS] Factura SRI RECHAZADA para Pedido ID 3: FIRMA INVALIDA: La firma es invalida [Firma inválida (firma y/o certificados alterados)]
+[2026-06-28 03:04:09] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Autorización Rechazada: FIRMA INVALIDA: La firma es invalida [Firma inválida (firma y/o certificados alterados)]
+[2026-06-28 03:10:41] [ERROR] [PEDIDOS] Factura SRI RECHAZADA para Pedido ID 3: 
+[2026-06-28 03:10:41] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Autorización Rechazada: 
+[2026-06-28 03:11:34] [ERROR] [PEDIDOS] Factura SRI RECHAZADA para Pedido ID 3: 
+[2026-06-28 03:11:35] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Autorización Rechazada: 
+[2026-06-28 03:14:46] [AUDIT] [PEDIDOS] Factura SRI AUTORIZADA para Pedido ID 1 (Clave: 2806202601175803560200110010040000000086521931413)
+[2026-06-28 03:15:03] [AUDIT] [PEDIDOS] Factura SRI AUTORIZADA mediante consulta previa para Pedido ID 3
+[2026-06-28 03:15:06] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Recepción Devuelta: ERROR SECUENCIAL REGISTRADO: 
+[2026-06-28 03:17:11] [AUDIT] [PEDIDOS] Pedido/Cotización creado: PED-00004
+[2026-06-28 03:17:15] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Recepción Devuelta: ERROR SECUENCIAL REGISTRADO: 
+[2026-06-28 03:17:23] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Recepción Devuelta: ERROR SECUENCIAL REGISTRADO: 
+[2026-06-28 03:18:12] [ERROR] [PEDIDOS] Error al emitir factura SRI: SRI Recepción Devuelta: ERROR SECUENCIAL REGISTRADO: 
+[2026-06-28 03:22:17] [AUDIT] [PEDIDOS] Factura SRI AUTORIZADA para Pedido ID 4 (Clave: 2806202601175803560200110010040000000096356189516)
+[2026-06-28 03:23:21] [AUDIT] [PEDIDOS] Factura SRI AUTORIZADA para Pedido ID 2 (Clave: 2806202601175803560200110010040000000103951782413)
+[2026-06-28 03:24:32] [AUDIT] [PEDIDOS] Pedido/Cotización creado: PED-00005
+[2026-06-28 03:25:01] [AUDIT] [PEDIDOS] Factura SRI AUTORIZADA para Pedido ID 5 (Clave: 2806202601175803560200110010040000000111192527619)
+[2026-06-28 17:00:32] [AUDIT] [REPORTES] Reporte de Ventas Excel generado por: admin@gablimados.com
+[2026-06-28 17:54:36] [AUDIT] [CONFIGURACION] Configuración SMTP actualizada por: admin@gablimados.com
+[2026-06-28 22:15:49] [AUDIT] [EMAIL] Factura 001-004-000000011 enviada a pquishpe@solinteec.com
+[2026-06-28 22:27:50] [AUDIT] [CONFIGURACION] Configuración SMTP actualizada por: admin@gablimados.com
+[2026-06-28 22:28:04] [AUDIT] [EMAIL] Factura 001-004-000000011 enviada a pquishpe@solinteec.com
