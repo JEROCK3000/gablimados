@@ -88,7 +88,8 @@ export function PedidoForm({ clientes, productos }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <>
+      <form onSubmit={handleSubmit} className="space-y-6">
       <div className="card space-y-4">
         <h3 className="font-bold text-gray-900 dark:text-white">Datos del Cliente</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -252,5 +253,6 @@ export function PedidoForm({ clientes, productos }: Props) {
         }}
       />
     )}
+    </>
   )
 }
