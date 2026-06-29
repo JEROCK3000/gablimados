@@ -42,3 +42,7 @@ next-env.d.ts
 
 # signature certificates
 *.p12
+
+# logs
+/storage/logs/
+*.log
