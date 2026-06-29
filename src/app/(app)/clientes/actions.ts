@@ -206,16 +206,17 @@ export async function consultarIdentificacionAction(identificacion: string) {
       return { success: false, error: `El servicio externo respondió con un error (Código ${res.status}).` }
     }
 
-    const data = await res.json()
+    const responseBody = await res.json()
+    const apiData = responseBody.data || responseBody
 
     let nombre = ''
     let direccion = ''
 
     if (isRuc) {
-      nombre = data.razonSocial || data.nombreComercial || data.name || ''
-      direccion = data.direccionMatriz || data.direccion || ''
+      nombre = apiData.business_name || apiData.trade_name || apiData.razonSocial || apiData.nombreComercial || apiData.name || ''
+      direccion = apiData.address || apiData.direccionMatriz || apiData.direccion || ''
     } else {
-      nombre = data.name || data.nombre || ''
+      nombre = apiData.full_name || apiData.name || apiData.nombre || ''
       direccion = ''
     }
 
