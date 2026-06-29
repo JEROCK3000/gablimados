@@ -32,11 +32,18 @@ export default async function VentasPage() {
       orderBy: { nombre: 'asc' }
     }),
     prisma.producto.findMany({
-      select: { id: true, nombre: true, precio: true },
+      select: { id: true, nombre: true, precioSugerido: true },
       orderBy: { nombre: 'asc' }
     }),
     prisma.emisorSRI.findFirst()
   ])
+
+  // Format products list
+  const formattedProductos = productos.map(p => ({
+    id: p.id,
+    nombre: p.nombre,
+    precio: Number(p.precioSugerido)
+  }))
 
   // Format emisor
   const formattedEmisor = emisor ? {
@@ -95,7 +102,7 @@ export default async function VentasPage() {
     <VentasClient 
       ventas={formattedVentas} 
       clientes={clientes} 
-      productos={productos} 
+      productos={formattedProductos} 
       emisor={formattedEmisor} 
     />
   )
