@@ -19,9 +19,9 @@ git pull origin main || echo -e "Advertencia: No se pudo hacer git pull. Se asum
 echo -e "${BLUE}[2/5] Instalando dependencias de npm...${NC}"
 npm install --production=false
 
-# 3. Aplicar migraciones de base de datos
-echo -e "${BLUE}[3/5] Aplicando migraciones de base de datos con Prisma...${NC}"
-npx prisma migrate deploy
+# 3. Aplicar esquema de base de datos
+echo -e "${BLUE}[3/5] Aplicando esquema de base de datos con Prisma (db push)...${NC}"
+npx prisma db push --accept-data-loss
 
 # 4. Generar cliente Prisma y compilar Next.js
 echo -e "${BLUE}[4/5] Generando cliente y compilando la aplicación Next.js...${NC}"

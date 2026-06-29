@@ -73,7 +73,8 @@ export default async function PedidosPage() {
       claveAcceso: p.facturaSRI.claveAcceso,
       numeroAutorizacion: p.facturaSRI.numeroAutorizacion,
       fechaAutorizacion: p.facturaSRI.fechaAutorizacion ? p.facturaSRI.fechaAutorizacion.toISOString() : null,
-      xmlFirmado: p.facturaSRI.xmlFirmado
+      xmlFirmado: p.facturaSRI.xmlFirmado,
+      mensajeError: p.facturaSRI.mensajeError
     } : null
   }))
 
