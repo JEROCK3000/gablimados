@@ -44,7 +44,7 @@ export function ClientPageContent({ clientes }: { clientes: Cliente[] }) {
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Buscar por nombre o RUC/Cédula..."
-            className="input pl-10"
+            className="input !pl-10"
           />
         </div>
         <button onClick={openNew} className="btn-primary flex items-center gap-2 justify-center">

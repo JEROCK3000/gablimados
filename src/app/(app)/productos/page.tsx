@@ -71,7 +71,7 @@ export default async function ProductosPage({
               type="text"
               defaultValue={buscar}
               placeholder="Buscar producto..."
-              className="input pl-10"
+              className="input !pl-10"
             />
           </div>
           {categorias.length > 0 && (

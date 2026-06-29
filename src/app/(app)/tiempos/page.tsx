@@ -73,7 +73,7 @@ export default async function TiemposPage({
               name="buscar"
               defaultValue={buscar}
               placeholder="Buscar producto sublimable..."
-              className="input pl-10"
+              className="input !pl-10"
             />
           </div>
           <select

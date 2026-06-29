@@ -88,7 +88,7 @@ export function InsumosClient({ insumos }: InsumosClientProps) {
             <input
               type="text"
               placeholder="Buscar insumo o proveedor..."
-              className="input pl-10"
+              className="input !pl-10"
               value={buscar}
               onChange={e => setBuscar(e.target.value)}
             />
